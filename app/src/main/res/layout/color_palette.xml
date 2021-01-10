@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="48dp">
+
+        <View
+            android:id="@+id/color1"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:tag="colorbox #E27802"
+            android:layout_height="wrap_content"
+            android:background="@color/color1"/>
+
+        <View
+            android:id="@+id/color2"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:tag="colorbox #312C51"
+            android:layout_height="wrap_content"
+            android:background="@color/color2"/>
+
+        <View
+            android:id="@+id/color3"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:tag="colorbox #FF577F"
+            android:layout_height="wrap_content"
+            android:background="@color/color3"/>
+
+        <View
+            android:id="@+id/color4"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:tag="colorbox #2C061F"
+            android:layout_height="wrap_content"
+            android:background="@color/color4"/>
+
+        <View
+            android:id="@+id/color5"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:tag="colorbox #295939"
+            android:layout_height="wrap_content"
+            android:background="@color/color5"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="48dp">
+
+        <View
+            android:id="@+id/color6"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:tag="colorbox #FDE8CD"
+            android:layout_height="wrap_content"
+            android:background="@color/color6"/>
+
+        <View
+            android:id="@+id/color7"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:tag="colorbox #EF4F4F"
+            android:layout_height="wrap_content"
+            android:background="@color/color7"/>
+
+        <View
+            android:id="@+id/color8"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:tag="colorbox #222831"
+            android:layout_height="wrap_content"
+            android:background="@color/color8"/>
+
+        <View
+            android:id="@+id/color9"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:tag="colorbox #DDDDDD"
+            android:layout_height="wrap_content"
+            android:background="@color/color9"/>
+
+        <View
+            android:id="@+id/color10"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:tag="colorbox #433D3C"
+            android:layout_height="wrap_content"
+            android:background="@color/color10"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="48dp">
+
+        <View
+            android:id="@+id/color11"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:tag="colorbox #FDB827"
+            android:layout_height="wrap_content"
+            android:background="@color/color11"/>
+
+        <View
+            android:id="@+id/color12"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:tag="colorbox #54E346"
+            android:layout_height="wrap_content"
+            android:background="@color/color12"/>
+
+        <View
+            android:id="@+id/color13"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:tag="colorbox #120078"
+            android:layout_height="wrap_content"
+            android:background="@color/color13"/>
+
+        <View
+            android:id="@+id/color14"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:tag="colorbox #8DB596"
+            android:layout_height="wrap_content"
+            android:background="@color/color14"/>
+
+        <View
+            android:id="@+id/color15"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:tag="colorbox #0E918C"
+            android:layout_height="wrap_content"
+            android:background="@color/color15"/>
+    </LinearLayout>
+
+</LinearLayout>
