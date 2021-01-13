@@ -9,5 +9,8 @@ class AppValues {
 
         @JvmStatic
         public val DEFAULT_BRUSH_WIDTH = 12f
+
+        @JvmStatic
+        public val SCREENSHOT_FOLDER = "Scribbles"
     }
 }

@@ -23,12 +23,19 @@
     <ImageView
         android:id="@+id/iv_bottom3"
         android:layout_weight="1"
-        android:src="@drawable/delete"
+        android:src="@drawable/uparrow"
         android:layout_width="0dp"
         android:layout_height="36dp"/>
 
     <ImageView
         android:id="@+id/iv_bottom4"
+        android:layout_weight="1"
+        android:src="@drawable/delete"
+        android:layout_width="0dp"
+        android:layout_height="36dp"/>
+
+    <ImageView
+        android:id="@+id/iv_bottom5"
         android:layout_weight="1"
         android:src="@drawable/eraser"
         android:layout_width="0dp"

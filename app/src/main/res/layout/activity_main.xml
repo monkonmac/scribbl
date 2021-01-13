@@ -52,6 +52,6 @@
         android:layout_gravity="end|right|bottom"
         android:layout_marginTop="48dp"
         android:layout_marginBottom="54dp"
-        android:layout_width="200dp"
+        android:layout_width="150dp"
         android:layout_height="300dp"/>
 </FrameLayout>

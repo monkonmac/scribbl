@@ -9,7 +9,9 @@ import android.os.Handler
 import android.speech.RecognitionListener
 import android.speech.RecognizerIntent
 import android.speech.SpeechRecognizer
+import android.view.MotionEvent
 import android.view.View
+import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.SeekBar
@@ -27,7 +29,7 @@ import java.util.ArrayList
 
 
 class MainActivity : AppCompatActivity(), View.OnClickListener, SeekBar.OnSeekBarChangeListener, DrawingViewEventListener,
-    GameScreen.GameScreenActionListener {
+    GameScreen.GameScreenActionListener, RecyclerView.OnItemTouchListener {
 
     private var fragManager: FragmentManager? = null
     private lateinit var gameScreen: GameScreen
@@ -35,6 +37,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SeekBar.OnSeekBa
     private lateinit var iv_button_2: ImageView
     private lateinit var iv_button_3: ImageView
     private lateinit var iv_button_4: ImageView
+    private lateinit var iv_button_5: ImageView
 
     private lateinit var sizeSlider: AppCompatSeekBar
 
@@ -55,6 +58,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SeekBar.OnSeekBa
     private lateinit var rvUserMessage : RecyclerView
     private lateinit var linearLayoutManager: LinearLayoutManager
 
+    private var rvMinMode = true
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -64,6 +69,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SeekBar.OnSeekBa
         rvUserMessage.layoutManager = linearLayoutManager
         rvUserMessage.itemAnimator = DefaultItemAnimator()
         rvUserMessage.adapter = UserMessageAdapter(getUserMessages())
+        rvUserMessage.addOnItemTouchListener(this)
 
         fragManager = supportFragmentManager
         gameScreen = GameScreen(this, this)
@@ -72,7 +78,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SeekBar.OnSeekBa
 
     private fun getUserMessages(): ArrayList<UserMessageModel> {
         val list = ArrayList<UserMessageModel>()
-        list.add(UserMessageModel(message = "castiel has guessed it right!!!"))
+        list.add(UserMessageModel(message = "castiel has guessed it right!!!", isInfo = true))
         for(i in 0..50){
             list.add(UserMessageModel("castiel", "burger"))
         }
@@ -95,11 +101,13 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SeekBar.OnSeekBa
         iv_button_2 = findViewById(R.id.iv_bottom2)
         iv_button_3 = findViewById(R.id.iv_bottom3)
         iv_button_4 = findViewById(R.id.iv_bottom4)
+        iv_button_5 = findViewById(R.id.iv_bottom5)
 
         iv_button_1.setOnClickListener(this)
         iv_button_2.setOnClickListener(this)
         iv_button_3.setOnClickListener(this)
         iv_button_4.setOnClickListener(this)
+        iv_button_5.setOnClickListener(this)
 
         sizeSlider = findViewById(R.id.size_slider);
         sizeSlider.max = 100
@@ -113,10 +121,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SeekBar.OnSeekBa
         when(p0?.id){
             R.id.iv_bottom1 -> passMessageToCanvas(CanvasCommand.BRUSH)
             R.id.iv_bottom2 -> passMessageToCanvas(CanvasCommand.PALETTE)
-            R.id.iv_bottom3 -> passMessageToCanvas(CanvasCommand.RESET)
-            R.id.iv_bottom4 -> passMessageToCanvas(CanvasCommand.ERASER)
+            R.id.iv_bottom3 -> passMessageToCanvas(CanvasCommand.SAVE_SCREENSHOT)
+            R.id.iv_bottom4 -> passMessageToCanvas(CanvasCommand.RESET)
+            R.id.iv_bottom5 -> passMessageToCanvas(CanvasCommand.ERASER)
             R.id.test_changeMode -> changeMode(!IS_PLAYER_DRAWING)
             R.id.stt_button -> sttLaunch()
+            R.id.rv_user_message -> flipUserMessageMode()
         }
     }
 
@@ -327,5 +337,30 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SeekBar.OnSeekBa
 
     private fun setTextInUserInput(match: String?) {
         textInputUser.setText(match)
+    }
+
+    private fun flipUserMessageMode() {
+        var layoutParms = rvUserMessage.layoutParams
+        if(rvMinMode){
+            layoutParms.height = ViewGroup.LayoutParams.MATCH_PARENT
+        }else{
+            layoutParms.height = 600
+        }
+        rvUserMessage.layoutParams = layoutParms
+        rvMinMode = !rvMinMode
+    }
+
+    override fun onTouchEvent(rv: RecyclerView, e: MotionEvent) {
+    }
+
+    override fun onInterceptTouchEvent(rv: RecyclerView, e: MotionEvent): Boolean {
+        if(e.action == MotionEvent.ACTION_DOWN){
+            flipUserMessageMode()
+        }
+        return true
+    }
+
+    override fun onRequestDisallowInterceptTouchEvent(disallowIntercept: Boolean) {
+
     }
 }
