@@ -83,6 +83,10 @@ public class DrawingView extends View {
         canvas.drawPath( circlePath,  circlePaint);
     }
 
+    public void saveBitmap(){
+        ScreenshotHelper.Companion.saveImage(mBitmap, context, AppValues.getSCREENSHOT_FOLDER());
+    }
+
     private float mX, mY;
     private static final float TOUCH_TOLERANCE = 4;
 
@@ -159,6 +163,9 @@ public class DrawingView extends View {
                 break;
             case DISABLE_DRAWING:
                 drawingStatusChanged(false);
+                break;
+            case SAVE_SCREENSHOT:
+                saveBitmap();
                 break;
             default:
                 break;
